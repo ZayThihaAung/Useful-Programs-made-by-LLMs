@@ -1,6 +1,6 @@
 # Useful Programs Made by LLMs
 
-Welcome to the **Useful Programs Made by LLMs** repository! 🚀
+Welcome to the **Useful Programs Made by LLMs** repository!
 
 Here, you'll find a curated collection of useful programs developed with the assistance of advanced language models like Chat GPT, Claude, and Google Gemini. The goal of this project is to showcase the potential of AI in solving complex problems, creating inspiring tools, and enhancing learning.
 
