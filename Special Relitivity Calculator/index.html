@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Relativity Calculator - MM Pop Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="Channel logo.jpg">
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-bold tracking-tight mb-2">နှိုင်းရသီအိုရီ- အချိန်နှင့် အာကာသ</h1>
+            <p class="text-slate-400">MM Pop Science အတွက် အထူးပြုလုပ်ထားသည် | အချိန်နှင့် အလျားပြောင်းလဲမှုကို လေ့လာခြင်း</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <section class="glass-card p-6 shadow-xl">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    လေ့လာသူ၏ မူလဘောင် (Earth Frame)
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Velocity -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">ခရီးသွားသူ၏ အလျင် (v)</label>
+                        <div class="flex gap-4 mb-2">
+                            <input type="number" id="velC" step="0.0001" min="0" max="0.999999" value="0.8" 
+                                class="input-field w-1/2 p-3 rounded-lg text-white" placeholder="အလင်းအလျင် (c)">
+                            <input type="number" id="velKm" step="1" min="0" max="299792" 
+                                class="input-field w-1/2 p-3 rounded-lg text-white" placeholder="km/s">
+                        </div>
+                        <input type="range" id="velRange" min="0" max="0.9999" step="0.0001" value="0.8" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- Observer Time -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">လေ့လာသူ၏ အချိန်ကုန်ဆုံးမှု (ΔT)</label>
+                        <input type="number" id="obsTime" value="10" 
+                            class="input-field w-full p-3 rounded-lg text-white">
+                        <p class="text-[11px] text-slate-500 mt-1">ကမ္ဘာပေါ်တွင် ကုန်ဆုံးသွားသည့် နှစ်/နာရီ စုစုပေါင်း။</p>
+                    </div>
+
+                    <!-- Resting Length -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">အရာဝတ္ထု၏ မူလအလျား (L₀)</label>
+                        <input type="number" id="restLen" value="100" 
+                            class="input-field w-full p-3 rounded-lg text-white">
+                        <p class="text-[11px] text-slate-500 mt-1">အရာဝတ္ထု (သို့) အာကာသယာဉ် ရပ်တန့်နေစဉ် ရှိသည့်အလျား။</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="space-y-6">
+                <div class="glass-card p-6 shadow-xl border-sky-500/30">
+                    <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        လေ့လာသူမှ တွေ့ရှိရသည့် ရလဒ်
+                    </h2>
+
+                    <div class="space-y-8">
+                        <!-- Lorentz Factor -->
+                        <div class="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20">
+                            <div class="text-sm text-sky-300 uppercase tracking-wider font-bold mb-1">လောရန့်ဇ် ကိန်းညွှန်း (Lorentz Factor)</div>
+                            <div id="resLorentz" class="text-4xl font-mono result-highlight">1.6667</div>
+                            <div id="gammaWarning" class="text-xs mt-2 text-slate-400">အချိန်နှင့် အာကာသ သိသိသာသာ ပြောင်းလဲနေသည်။</div>
+                        </div>
+
+                        <!-- Traveler's Time -->
+                        <div class="flex justify-between items-center p-4 border-b border-white/5">
+                            <div>
+                                <div class="text-sm text-slate-400">ခရီးသွားသူ တွေ့ကြုံရသည့် အချိန်</div>
+                                <div id="resTravelerTime" class="text-2xl font-semibold text-emerald-400">6.0000</div>
+                                <p class="text-[11px] text-slate-500">လေ့လာသူအတွက် ခရီးသွားသူ၏ နာရီသည် ပိုနှေးနေမည်။</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-slate-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Observed Length -->
+                        <div class="flex justify-between items-center p-4 border-b border-white/5">
+                            <div>
+                                <div class="text-sm text-slate-400">လေ့လာသူ တွေ့ရသည့် အလျားကျုံ့မှု</div>
+                                <div id="resObservedLength" class="text-2xl font-semibold text-rose-400">60.0000</div>
+                                <p class="text-[11px] text-slate-500">ရွေ့လျားနေသော အရာဝတ္ထုသည် ပိုတိုနေမည်။</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-slate-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Visualization -->
+                <div class="glass-card p-6">
+                    <h3 class="text-sm font-semibold text-slate-400 mb-4 uppercase">အလျား နှိုင်းယှဉ်ချက်</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span>မူလအလျား (L₀)</span>
+                                <span id="valL0">100</span>
+                            </div>
+                            <div class="h-4 bg-slate-700 rounded-full w-full opacity-50"></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span>လက်တွေ့တွေ့ရသည့်အလျား (L)</span>
+                                <span id="valL" class="text-rose-400">60.00</span>
+                            </div>
+                            <div id="vizContracted" class="h-4 bg-rose-500 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(244,63,94,0.4)]" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="mt-12 text-center text-slate-500 text-sm">
+            <p>တွက်ချက်မှုဆိုင်ရာ အခြေခံ အလင်းအလျင် c = 299,792.458 km/s</p>
+        </footer>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
