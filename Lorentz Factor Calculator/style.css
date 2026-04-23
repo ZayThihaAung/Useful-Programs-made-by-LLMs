@@ -1,0 +1,56 @@
+/* Import Noto Sans Myanmar for Burmese text */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+Myanmar:wght@300;400;600;700&display=swap');
+        
+body {
+            font-family: 'Noto Sans Myanmar', 'Inter', sans-serif; /* Set Burmese font as primary */
+    background-color: #0f172a;
+    background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #38bdf8;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #334155;
+            border-radius: 2px;
+        }
+        
+        /* Animation for result updates */
+        @keyframes highlight {
+            0% { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+            100% { color: #e2e8f0; text-shadow: none; }
+        }
+        .value-update {
+            animation: highlight 0.5s ease-out;
+        }
