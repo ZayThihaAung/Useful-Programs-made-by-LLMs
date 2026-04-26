@@ -387,15 +387,9 @@ function burmese() {
 initBuild();
 
 englishRadio.addEventListener('change', () => {
-    if (englishRadio.checked) {
-        english();
-        console.log('English selected');
-    }
+    if (englishRadio.checked) english();
 });
 
 myanmarRadio.addEventListener('change', () => {
-    if (myanmarRadio.checked) {
-        burmese();
-        console.log('Burmese selected');
-    }
+    if (myanmarRadio.checked) burmese();
 });
