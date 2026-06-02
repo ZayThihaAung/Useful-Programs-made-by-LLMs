@@ -216,3 +216,9 @@ document.addEventListener("mouseout", (e) => {
 });
 
 render();
+
+// prevent not defined error when running tests
+window.runTests = runTests;
+window.markDone = markDone;
+window.goLesson = goLesson;
+window.render = render;
